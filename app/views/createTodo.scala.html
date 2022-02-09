@@ -1,0 +1,18 @@
+@(form: play.api.data.Form[Todo])(implicit messages: play.api.i18n.Messages, requestHeader: RequestHeader)
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create todo</title>
+  </head>
+  <body>
+    @helper.form(routes.CreateTodoController.post(), Symbol("class") -> "my-form") {
+      @helper.CSRF.formField
+      @helper.inputText(form("todoText"), Symbol("_label") -> "Todo text")
+      <input type="submit" value="Add todo" />
+    }
+  </body>
+</html>
